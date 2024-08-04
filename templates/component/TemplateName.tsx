@@ -6,7 +6,7 @@ import { TemplateNameProps } from './TemplateName.props';
 const TemplateName: FC<TemplateNameProps> = () => {
   return (
     <>
-      <div className={cn(styles.TemplateName)}></div>;
+      <div className={cn(styles.TemplateName)}></div>
     </>
   );
 };
