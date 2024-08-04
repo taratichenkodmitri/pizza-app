@@ -6,12 +6,13 @@
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-
-.Accent:hover {
-  background: #100f6b;
+  color: var(--background-color);
 }
 
 .Accent {
-  background: #312eb5;
+  background: var(--primary-color);
+}
+
+.Accent:hover {
+  background: var(--primary-hover-color);
 }
