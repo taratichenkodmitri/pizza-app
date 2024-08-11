@@ -1,2 +1,55 @@
 .MenuLayout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px;
+  border-right: 1px solid var(--separator-color);
+}
+
+.Menu {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.Link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.User {
+  margin-bottom: 46px;
+}
+
+.Avatar {
+  margin-bottom: 20px;
+  box-shadow: 0 8px 40px 0 rgba(255, 197, 41, 0.25);
+}
+
+.Username {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.Email {
+  font-weight: 400;
+  font-size: 14px;
+  color: #9ea1b1;
+}
+
+.Exit {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
 }

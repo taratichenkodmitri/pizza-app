@@ -3,6 +3,7 @@
   --primary-hover-color: #df6442;
   --secondary-color: #d4d6e0;
   --background-color: #ffffff;
+  --separator-color: #d4d6e0;
 
   --text-color: #000000;
   --text-secondary-color: #5b5b5e;
@@ -11,4 +12,5 @@
 
 body {
   font-family: var(--font);
+  margin: 0;
 }
