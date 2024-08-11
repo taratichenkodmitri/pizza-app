@@ -2,7 +2,7 @@ import { FC } from 'react';
 import cn from 'classnames';
 import styles from './MenuLayout.module.css';
 import { MenuLayoutProps } from './MenuLayout.props';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 
 const MenuLayout: FC<MenuLayoutProps> = () => {
@@ -19,26 +19,34 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
           <div className={styles.Email}>user@user.com</div>
         </div>
         <div className={styles.Menu}>
-          <Link
+          <NavLink
             to="/"
-            className={styles.Link}
+            className={({ isActive }) =>
+              cn(styles.Link, {
+                [styles.Active]: isActive,
+              })
+            }
           >
             <img
               src="menu-icon.svg"
               alt="Menu icon"
             ></img>
             Menu
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/cart"
-            className={styles.Link}
+            className={({ isActive }) =>
+              cn(styles.Link, {
+                [styles.Active]: isActive,
+              })
+            }
           >
             <img
               src="cart-icon.svg"
               alt="Cart icon"
             ></img>
             Cart
-          </Link>
+          </NavLink>
         </div>
         <Button className={styles.Exit}>
           <img

@@ -25,6 +25,14 @@
   color: var(--text-color);
 }
 
+.Link:hover {
+  color: var(--primary-hover-color);
+}
+
+.Active {
+  color: var(--primary-hover-color);
+}
+
 .User {
   margin-bottom: 46px;
 }
