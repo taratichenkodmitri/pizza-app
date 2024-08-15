@@ -56,7 +56,7 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
           Exit
         </Button>
       </div>
-      <div>
+      <div className={styles.Content}>
         <Outlet />
       </div>
     </div>

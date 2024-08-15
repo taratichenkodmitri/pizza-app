@@ -1,2 +1,7 @@
 .Menu {
 }
+
+.Head {
+  display: flex;
+  justify-content: space-between;
+}

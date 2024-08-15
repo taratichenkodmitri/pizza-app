@@ -61,3 +61,8 @@
   align-items: center;
   gap: 9px;
 }
+
+.Content {
+  width: 100%;
+  padding: 40px 60px;
+}

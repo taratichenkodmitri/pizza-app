@@ -1,0 +1,21 @@
+.Search {
+  position: relative;
+}
+
+.SearchInput {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-secondary-color);
+
+  padding: 16px 30px 16px 44px;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  background: #fcfcfd;
+  min-width: 200px;
+}
+
+.SearchIcon {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+}
