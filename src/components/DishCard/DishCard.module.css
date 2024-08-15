@@ -1,0 +1,82 @@
+.Link {
+  text-decoration: none;
+}
+
+.DishCard {
+  width: 320px;
+
+  box-shadow: 18px 18px 36px 0 rgba(211, 209, 216, 0.25);
+  background: var(--background-color);
+  border-radius: 18px;
+}
+
+.DishCardHeader {
+  position: relative;
+  min-height: 165px;
+  border-radius: 18px;
+}
+
+.DishCardPrice {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+
+  border-radius: 20px;
+  background-color: var(--background-color);
+  padding: 3px 10px;
+  box-shadow: 0 7px 28px 0 rgba(254, 114, 76, 0.2);
+
+  font-weight: 400;
+  font-size: 20px;
+  color: #111719;
+}
+
+.Currency {
+  color: var(--primary-color);
+}
+
+.DishCardToCart {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  border: none;
+
+  cursor: pointer;
+}
+
+.DishCardToCart:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.DishCardRatio {
+  display: flex;
+  gap: 3px;
+  position: absolute;
+  bottom: -12px;
+  left: 15px;
+
+  border-radius: 121px;
+  box-shadow: 0 7px 28px 0 rgba(254, 114, 76, 0.2);
+  background: var(--background-color);
+  padding: 3px 8px;
+}
+
+.DishCardFooter {
+  padding: 12px;
+}
+
+.DishCardFooterTitle {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text-color);
+}
+.DishCardFooterIngredients {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-secondary-color);
+}
