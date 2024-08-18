@@ -1,2 +1,6 @@
 .DishList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 30px;
 }
