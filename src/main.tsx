@@ -32,6 +32,7 @@ const router = createBrowserRouter([
       {
         path: 'dish/:id',
         element: <Dish />,
+        errorElement: <>Error</>,
         loader: async ({ params }) => {
           return defer({
             data: axios.get<DishIface>(`${API_PREFIX}/products/${params.id}`).then((data) => data),

@@ -21,14 +21,14 @@ const DishCard: FC<DishCardProps> = (props) => {
           </div>
           <button className={styles.DishCardToCart}>
             <img
-              src="to-cart-icon.svg"
+              src="/to-cart-icon.svg"
               alt="To cart icon"
             />
           </button>
           <div className={styles.DishCardRatio}>
             {props.rating}&nbsp;
             <img
-              src="star-icon.svg"
+              src="/star-icon.svg"
               alt="Star icon"
             />
           </div>

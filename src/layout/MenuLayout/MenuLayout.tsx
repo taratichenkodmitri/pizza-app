@@ -12,7 +12,7 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
         <div className={styles.User}>
           <img
             className={styles.Avatar}
-            src="avatar.png"
+            src="/avatar.png"
             alt="Avatar"
           />
           <div className={styles.Username}>User name</div>
@@ -28,7 +28,7 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
             }
           >
             <img
-              src="menu-icon.svg"
+              src="/menu-icon.svg"
               alt="Menu icon"
             ></img>
             Menu
@@ -42,7 +42,7 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
             }
           >
             <img
-              src="cart-icon.svg"
+              src="/cart-icon.svg"
               alt="Cart icon"
             ></img>
             Cart
@@ -50,7 +50,7 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
         </div>
         <Button className={styles.Exit}>
           <img
-            src="exit-icon.svg"
+            src="/exit-icon.svg"
             alt="Exit icon"
           />
           Exit

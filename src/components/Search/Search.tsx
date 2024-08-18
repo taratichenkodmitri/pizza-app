@@ -12,7 +12,7 @@ const Search: FC<SearchProps> = ({ ...props }) => {
       />
       <img
         className={styles.SearchIcon}
-        src="search-icon.svg"
+        src="/search-icon.svg"
         alt="Search icon"
       />
     </div>
