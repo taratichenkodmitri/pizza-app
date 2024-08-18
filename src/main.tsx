@@ -7,6 +7,9 @@ import Cart from './page/Cart/Cart.tsx';
 import Error from './page/Error/Error.tsx';
 import MenuLayout from './layout/MenuLayout/MenuLayout.tsx';
 import Dish from './page/Dish/Dish.tsx';
+import axios from 'axios';
+import { DishIface } from './interfaces/dish.interface.ts';
+import { API_PREFIX } from './helpers/constants.ts';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,15 @@ const router = createBrowserRouter([
       {
         path: 'dish/:id',
         element: <Dish />,
+        loader: async ({ params }) => {
+          await new Promise<void>((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 2000);
+          });
+          const { data } = await axios.get<DishIface>(`${API_PREFIX}/products/${params.id}`);
+          return data;
+        },
       },
       {
         path: '*',
