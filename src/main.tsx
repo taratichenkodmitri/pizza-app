@@ -6,6 +6,7 @@ import Menu from './page/Menu/Menu.tsx';
 import Cart from './page/Cart/Cart.tsx';
 import Error from './page/Error/Error.tsx';
 import MenuLayout from './layout/MenuLayout/MenuLayout.tsx';
+import Dish from './page/Dish/Dish.tsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />,
+      },
+      {
+        path: 'dish/:id',
+        element: <Dish />,
       },
       {
         path: '*',

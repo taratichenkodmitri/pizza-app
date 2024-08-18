@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const DishCard: FC<DishCardProps> = (props) => {
   return (
     <Link
-      to={'/'}
+      to={`dish/${props.id}`}
       className={styles.Link}
     >
       <div className={cn(styles.DishCard)}>
