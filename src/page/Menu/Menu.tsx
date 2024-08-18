@@ -7,16 +7,14 @@ import Header from '../../components/Header/Header';
 import DishCard from '../../components/DishCard/DishCard';
 import { DishIface } from '../../interfaces/dish.interface';
 import { API_PREFIX } from '../../helpers/constants';
+import axios from 'axios';
 
 const Menu: FC<MenuProps> = () => {
   const [dishes, setDishes] = useState<DishIface[]>([]);
 
   const getDishes = async () => {
     try {
-      const res = await fetch(`${API_PREFIX}/products`);
-      if (!res.ok) return;
-
-      const data = (await res.json()) as DishIface[];
+      const { data } = await axios.get<DishIface[]>(`${API_PREFIX}/products`);
       setDishes(data);
     } catch (e) {
       console.error(e);
