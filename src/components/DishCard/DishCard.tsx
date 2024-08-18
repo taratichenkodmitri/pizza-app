@@ -13,7 +13,7 @@ const DishCard: FC<DishCardProps> = (props) => {
       <div className={cn(styles.DishCard)}>
         <div
           className={styles.DishCardHeader}
-          style={{ backgroundImage: `url(${props.src})` }}
+          style={{ backgroundImage: `url(${props.image})` }}
         >
           <div className={styles.DishCardPrice}>
             {props.price}&nbsp;
@@ -26,7 +26,7 @@ const DishCard: FC<DishCardProps> = (props) => {
             />
           </button>
           <div className={styles.DishCardRatio}>
-            {props.ratio}&nbsp;
+            {props.rating}&nbsp;
             <img
               src="star-icon.svg"
               alt="Star icon"
@@ -34,7 +34,7 @@ const DishCard: FC<DishCardProps> = (props) => {
           </div>
         </div>
         <div className={styles.DishCardFooter}>
-          <div className={styles.DishCardFooterTitle}>{props.title}</div>
+          <div className={styles.DishCardFooterTitle}>{props.name}</div>
           <div className={styles.DishCardFooterIngredients}>{props.ingredients}</div>
         </div>
       </div>

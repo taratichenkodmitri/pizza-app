@@ -1,12 +1,32 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './Menu.module.css';
 import { MenuProps } from './Menu.props';
 import Search from '../../components/Search/Search';
 import Header from '../../components/Header/Header';
 import DishCard from '../../components/DishCard/DishCard';
+import { DishIface } from '../../interfaces/dish.interface';
+import { API_PREFIX } from '../../helpers/constants';
 
 const Menu: FC<MenuProps> = () => {
+  const [dishes, setDishes] = useState<DishIface[]>([]);
+
+  const getDishes = async () => {
+    try {
+      const res = await fetch(`${API_PREFIX}/products`);
+      if (!res.ok) return;
+
+      const data = (await res.json()) as DishIface[];
+      setDishes(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    getDishes();
+  }, []);
+
   return (
     <div className={styles.Menu}>
       <div className={cn(styles.Head)}>
@@ -14,14 +34,17 @@ const Menu: FC<MenuProps> = () => {
         <Search placeholder="Enter dish or ingredients" />
       </div>
       <div>
-        <DishCard
-          id={1}
-          src="dish.png"
-          price={300}
-          ratio={4.7}
-          title={'Наслаждение'}
-          ingredients="Салями, руккола, помидоры, оливки"
-        />
+        {dishes.map((dish) => (
+          <DishCard
+            key={dish.id}
+            id={dish.id}
+            price={dish.price}
+            image={dish.image}
+            ingredients={dish.ingredients.join(', ')}
+            rating={dish.rating}
+            name={dish.name}
+          />
+        ))}
       </div>
     </div>
   );

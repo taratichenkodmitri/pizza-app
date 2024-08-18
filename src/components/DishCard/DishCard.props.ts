@@ -1,8 +1,8 @@
 export interface DishCardProps {
   id: number;
-  title: string;
+  name: string;
   ingredients: string;
-  src: string;
+  image: string;
   price: number;
-  ratio: number;
+  rating: number;
 }
