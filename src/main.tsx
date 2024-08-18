@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
 import Cart from './page/Cart/Cart.tsx';
 import Error from './page/Error/Error.tsx';
 import MenuLayout from './layout/MenuLayout/MenuLayout.tsx';
@@ -33,13 +33,9 @@ const router = createBrowserRouter([
         path: 'dish/:id',
         element: <Dish />,
         loader: async ({ params }) => {
-          await new Promise<void>((resolve) => {
-            setTimeout(() => {
-              resolve();
-            }, 2000);
+          return defer({
+            data: axios.get<DishIface>(`${API_PREFIX}/products/${params.id}`).then((data) => data),
           });
-          const { data } = await axios.get<DishIface>(`${API_PREFIX}/products/${params.id}`);
-          return data;
         },
       },
       {
