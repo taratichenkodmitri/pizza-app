@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Menu from './page/Menu/Menu.tsx';
 import Cart from './page/Cart/Cart.tsx';
 import Error from './page/Error/Error.tsx';
 import MenuLayout from './layout/MenuLayout/MenuLayout.tsx';
@@ -11,6 +10,8 @@ import axios from 'axios';
 import { DishIface } from './interfaces/dish.interface.ts';
 import { API_PREFIX } from './helpers/constants.ts';
 
+const Menu = lazy(() => import('./page/Menu/Menu'));
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Menu />,
+        element: (
+          <Suspense fallback={<>Loading ...</>}>
+            <Menu />
+          </Suspense>
+        ),
       },
       {
         path: '/cart',
