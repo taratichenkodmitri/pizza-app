@@ -1,0 +1,19 @@
+.AuthLayout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.Logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Content {
+  border-left: 1px solid var(--secondary-color);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

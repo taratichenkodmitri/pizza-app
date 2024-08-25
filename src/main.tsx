@@ -8,7 +8,10 @@ import MenuLayout from './layout/MenuLayout/MenuLayout.tsx';
 import Dish from './page/Dish/Dish.tsx';
 import axios from 'axios';
 import { DishIface } from './interfaces/dish.interface.ts';
-import { API_PREFIX } from './helpers/constants.ts';
+import { API_PREFIX } from './helpers/constants';
+import Login from './page/Login/Login.tsx';
+import Register from './page/Register/Register.tsx';
+import AuthLayout from './layout/AuthLayout/AuthLayout.tsx';
 
 const Menu = lazy(() => import('./page/Menu/Menu'));
 
@@ -42,6 +45,20 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <Error />,
+      },
+    ],
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
       },
     ],
   },
