@@ -1,2 +1,44 @@
 .Login {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.Field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.Field label {
+  font-weight: 400;
+  font-size: 17px;
+  color: #c4c4c4;
+}
+
+.Links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-secondary-color);
+  font-size: 14px;
+}
+
+.Links a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.Error {
+  padding: 20px;
+  color: var(--background-color);
+  background: #ffc529;
 }

@@ -2,10 +2,17 @@ import { FC } from 'react';
 import cn from 'classnames';
 import styles from './MenuLayout.module.css';
 import { MenuLayoutProps } from './MenuLayout.props';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 
 const MenuLayout: FC<MenuLayoutProps> = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem('jwt');
+    navigate('/auth/login');
+  };
+
   return (
     <div className={cn(styles.MenuLayout)}>
       <div className={cn(styles.Sidebar)}>
@@ -48,7 +55,10 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
             Cart
           </NavLink>
         </div>
-        <Button className={styles.Exit}>
+        <Button
+          className={styles.Exit}
+          onClick={logout}
+        >
           <img
             src="/exit-icon.svg"
             alt="Exit icon"

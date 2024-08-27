@@ -12,13 +12,18 @@ import { API_PREFIX } from './helpers/constants';
 import Login from './page/Login/Login.tsx';
 import Register from './page/Register/Register.tsx';
 import AuthLayout from './layout/AuthLayout/AuthLayout.tsx';
+import { RequireAuth } from './helpers/RequireAuth.tsx';
 
 const Menu = lazy(() => import('./page/Menu/Menu'));
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MenuLayout />,
+    element: (
+      <RequireAuth>
+        <MenuLayout />
+      </RequireAuth>
+    ),
     children: [
       {
         path: '/',
