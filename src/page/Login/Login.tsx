@@ -9,10 +9,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosError } from 'axios';
 import { API_PREFIX } from '../../helpers/constants';
 import { LoginResponse } from '../../interfaces/auth.intetfacer';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 
 const Login: FC<LoginProps> = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const onLogin = (e: FormEvent) => {
     e.preventDefault();
@@ -28,7 +32,7 @@ const Login: FC<LoginProps> = () => {
         email,
         password,
       });
-      localStorage.setItem('jwt', data.access_token);
+      dispatch(userActions.setJwt(data.access_token));
       navigate('/');
     } catch (e) {
       if (e instanceof AxiosError) {
