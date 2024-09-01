@@ -9,7 +9,9 @@ export const store = configureStore({
 });
 
 store.subscribe(() => {
-  saveState<UserPersistanceState>(USER_PERSISTANCE_STATE_KEY, { jwt: store.getState().user.jwt });
+  saveState<UserPersistanceState>(USER_PERSISTANCE_STATE_KEY, {
+    jwt: store.getState().user.jwt,
+  });
 });
 
 export type RootState = ReturnType<typeof store.getState>;

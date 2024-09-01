@@ -1,16 +1,21 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import cn from 'classnames';
 import styles from './MenuLayout.module.css';
 import { MenuLayoutProps } from './MenuLayout.props';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import { useDispatch } from 'react-redux';
-import { userActions } from '../../store/user.slice';
-import { AppDispatch } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile, userActions } from '../../store/user.slice';
+import { AppDispatch, RootState } from '../../store/store';
 
 const MenuLayout: FC<MenuLayoutProps> = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const profile = useSelector((s: RootState) => s.user.profile);
+
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
 
   const logout = () => {
     dispatch(userActions.logout());
@@ -26,8 +31,8 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
             src="/avatar.png"
             alt="Avatar"
           />
-          <div className={styles.Username}>User name</div>
-          <div className={styles.Email}>user@user.com</div>
+          <div className={styles.Username}>{profile?.name}</div>
+          <div className={styles.Email}>{profile?.email}</div>
         </div>
         <div className={styles.Menu}>
           <NavLink
