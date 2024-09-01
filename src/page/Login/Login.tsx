@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, useEffect } from 'react';
 import cn from 'classnames';
 import styles from './Login.module.css';
 import { LoginForm, LoginProps } from './Login.props';
@@ -6,45 +6,35 @@ import Header from '../../components/Header/Header';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import axios, { AxiosError } from 'axios';
-import { API_PREFIX } from '../../helpers/constants';
-import { LoginResponse } from '../../interfaces/auth.intetfacer';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store/store';
-import { userActions } from '../../store/user.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { login, userActions } from '../../store/user.slice';
 
 const Login: FC<LoginProps> = () => {
-  const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const { jwt, loginErrorMessage } = useSelector((s: RootState) => s.user);
+
+  useEffect(() => {
+    if (jwt) navigate('/');
+  }, [jwt, navigate]);
 
   const onLogin = (e: FormEvent) => {
     e.preventDefault();
-    setError(null);
+    dispatch(userActions.clearError());
     const target = e.target as typeof e.target & LoginForm;
     const { email, password } = target;
     loginRequest(email.value, password.value);
   };
 
   const loginRequest = async (email: string, password: string) => {
-    try {
-      const { data } = await axios.post<LoginResponse>(`${API_PREFIX}/auth/login`, {
-        email,
-        password,
-      });
-      dispatch(userActions.setJwt(data.access_token));
-      navigate('/');
-    } catch (e) {
-      if (e instanceof AxiosError) {
-        setError(e.response?.data.message);
-      }
-    }
+    dispatch(login({ email, password }));
   };
 
   return (
     <div className={styles.Login}>
       <Header>Sign in</Header>
-      {error && <div className={styles.Error}>{error}</div>}
+      {loginErrorMessage && <div className={styles.Error}>{loginErrorMessage}</div>}
       <form
         className={cn(styles.Form)}
         onSubmit={onLogin}
