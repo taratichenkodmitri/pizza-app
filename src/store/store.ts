@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice, { USER_PERSISTANCE_STATE_KEY, UserPersistanceState } from './user.slice';
 import { saveState } from './storage';
+import cartSlice from './cart.slice';
 
 export const store = configureStore({
   reducer: {
     user: userSlice,
+    cart: cartSlice,
   },
 });
 

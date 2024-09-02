@@ -1,10 +1,20 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import cn from 'classnames';
 import styles from './DishCard.module.css';
 import { DishCardProps } from './DishCard.props';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { cartActions } from '../../store/cart.slice';
 
 const DishCard: FC<DishCardProps> = (props) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const addToCart = (e: MouseEvent) => {
+    e.preventDefault();
+    dispatch(cartActions.add(props.id));
+  };
+
   return (
     <Link
       to={`dish/${props.id}`}
@@ -19,7 +29,10 @@ const DishCard: FC<DishCardProps> = (props) => {
             {props.price}&nbsp;
             <span className={styles.Currency}>₽</span>
           </div>
-          <button className={styles.DishCardToCart}>
+          <button
+            className={styles.DishCardToCart}
+            onClick={addToCart}
+          >
             <img
               src="/to-cart-icon.svg"
               alt="To cart icon"
