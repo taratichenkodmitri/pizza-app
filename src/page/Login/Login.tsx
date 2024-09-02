@@ -13,7 +13,11 @@ import { login, userActions } from '../../store/user.slice';
 const Login: FC<LoginProps> = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { jwt, loginErrorMessage } = useSelector((s: RootState) => s.user);
+  const { jwt, errorMessage } = useSelector((s: RootState) => s.user);
+
+  useEffect(() => {
+    dispatch(userActions.clearError());
+  }, [dispatch]);
 
   useEffect(() => {
     if (jwt) navigate('/');
@@ -27,14 +31,14 @@ const Login: FC<LoginProps> = () => {
     loginRequest(email.value, password.value);
   };
 
-  const loginRequest = async (email: string, password: string) => {
+  const loginRequest = (email: string, password: string) => {
     dispatch(login({ email, password }));
   };
 
   return (
     <div className={styles.Login}>
       <Header>Sign in</Header>
-      {loginErrorMessage && <div className={styles.Error}>{loginErrorMessage}</div>}
+      {errorMessage && <div className={styles.Error}>{errorMessage}</div>}
       <form
         className={cn(styles.Form)}
         onSubmit={onLogin}
@@ -60,7 +64,7 @@ const Login: FC<LoginProps> = () => {
       </form>
       <div className={styles.Links}>
         <div>no account?</div>
-        <Link to="auth/register">sign up</Link>
+        <Link to="/auth/register">sign up</Link>
       </div>
     </div>
   );
