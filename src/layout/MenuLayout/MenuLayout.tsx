@@ -12,6 +12,7 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const profile = useSelector((s: RootState) => s.user.profile);
+  const cartItems = useSelector((s: RootState) => s.cart.items);
 
   useEffect(() => {
     dispatch(getProfile());
@@ -62,6 +63,9 @@ const MenuLayout: FC<MenuLayoutProps> = () => {
               alt="Cart icon"
             ></img>
             Cart
+            {cartItems.length > 0 && (
+              <span className={styles.CartCount}>{cartItems.reduce((acc, item) => (acc += item.count), 0)}</span>
+            )}
           </NavLink>
         </div>
         <Button
