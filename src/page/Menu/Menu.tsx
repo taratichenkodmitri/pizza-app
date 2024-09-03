@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './Menu.module.css';
 import { MenuProps } from './Menu.props';
@@ -13,8 +13,13 @@ const Menu: FC<MenuProps> = () => {
   const [dishes, setDishes] = useState<DishIface[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
+  const [filter, setFilter] = useState<string>('');
 
-  const getDishes = async () => {
+  const onChangeFilter = (e: ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
+  }
+
+  const getDishes = async (name?: string) => {
     try {
       setIsLoading(true);
       setError(undefined);
@@ -23,7 +28,11 @@ const Menu: FC<MenuProps> = () => {
           resolve();
         }, 2000);
       });
-      const { data } = await axios.get<DishIface[]>(`${API_PREFIX}/products`);
+      const { data } = await axios.get<DishIface[]>(`${API_PREFIX}/products`, {
+        params: {
+          name: name
+        }
+      });
       setDishes(data);
       setIsLoading(false);
     } catch (e) {
@@ -34,14 +43,14 @@ const Menu: FC<MenuProps> = () => {
   };
 
   useEffect(() => {
-    getDishes();
-  }, []);
+    getDishes(filter);
+  }, [filter]);
 
   return (
     <div className={styles.Menu}>
       <div className={cn(styles.Head)}>
         <Header>Menu</Header>
-        <Search placeholder="Enter dish or ingredients" />
+        <Search placeholder="Enter dish or ingredients" onChange={onChangeFilter}/>
       </div>
       <div>
         {error && <>{error}</>}
