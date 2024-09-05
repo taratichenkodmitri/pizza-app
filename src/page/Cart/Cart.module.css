@@ -1,6 +1,43 @@
 .Cart {
 }
 
-.Header {
-  margin-bottom: 40px;
+.Head {
+  margin-bottom: 40px !important;
+}
+
+.Line {
+  display: flex;
+  justify-content: space-between;
+  max-width: 512px;
+  padding: 17px 0;
+}
+
+.Line span {
+  color: #9796a1;
+}
+
+.Hr {
+  max-width: 512px;
+  margin: 0;
+  border: 1px solid #f1f2f3;
+}
+
+.Price {
+  color: var(--text-color);
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.Text {
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.makeOrder {
+  max-width: 512px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
 }

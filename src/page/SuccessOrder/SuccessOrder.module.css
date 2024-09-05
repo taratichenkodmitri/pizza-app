@@ -1,0 +1,13 @@
+.SuccessOrder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.Text {
+  color: var(--text-color);
+  font-size: 31px;
+  font-weight: 300;
+}
