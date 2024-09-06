@@ -1,0 +1,10 @@
+.Rating {
+  display: flex;
+  gap: 3px;
+
+  border-radius: 121px;
+  box-shadow: 0 7px 28px 0 rgba(254, 114, 76, 0.2);
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 3px 8px;
+}

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
+import Rating from '../Rating/Rating';
 
 const DishCard: FC<DishCardProps> = (props) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,13 +39,10 @@ const DishCard: FC<DishCardProps> = (props) => {
               alt="To cart icon"
             />
           </button>
-          <div className={styles.DishCardRatio}>
-            {props.rating}&nbsp;
-            <img
-              src="/star-icon.svg"
-              alt="Star icon"
-            />
-          </div>
+          <Rating
+            rating={props.rating}
+            className={styles.DishCardRatio}
+          />
         </div>
         <div className={styles.DishCardFooter}>
           <div className={styles.DishCardFooterTitle}>{props.name}</div>

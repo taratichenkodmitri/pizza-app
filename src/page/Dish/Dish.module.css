@@ -1,2 +1,95 @@
 .Dish {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.Head {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.Back {
+  height: 38px;
+  width: 38px;
+  background: var(--background-color);
+  box-shadow: 5px 10px 20px 0 rgba(211, 209, 216, 0.3);
+  border: none;
+  border-radius: 30%;
+  cursor: pointer;
+}
+
+.ToCart {
+  margin-left: auto;
+}
+
+.ToCartContent {
+  display: flex;
+  gap: 14px;
+}
+
+.Description {
+  display: flex;
+  gap: 48px;
+}
+
+.DescriptionImage {
+  border-radius: 18px;
+  width: 323px;
+  height: 248px;
+  background-size: cover;
+  background-color: #c4c4c4;
+}
+
+.DescriptionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  min-width: 200px;
+}
+
+.DescriptionProp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DescriptionText {
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.DescriptionPrice {
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--text-color);
+}
+
+.DescriptionHr {
+  border: 1px solid #f1f2f3;
+  width: 100%;
+}
+
+.DescriptionCurrency {
+  font-weight: 400;
+  font-size: 14px;
+  color: #9796a1;
+}
+
+.DescriptionIngredients {
+  margin-top: 5px;
+}
+
+.DescriptionIngredients div {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-secondary-color);
+}
+
+.DescriptionIngredients li {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-secondary-color);
 }
