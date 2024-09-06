@@ -17,21 +17,16 @@ const Menu: FC<MenuProps> = () => {
 
   const onChangeFilter = (e: ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
-  }
+  };
 
   const getDishes = async (name?: string) => {
     try {
       setIsLoading(true);
       setError(undefined);
-      await new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, 2000);
-      });
       const { data } = await axios.get<DishIface[]>(`${API_PREFIX}/products`, {
         params: {
-          name: name
-        }
+          name: name,
+        },
       });
       setDishes(data);
       setIsLoading(false);
@@ -50,7 +45,10 @@ const Menu: FC<MenuProps> = () => {
     <div className={styles.Menu}>
       <div className={cn(styles.Head)}>
         <Header>Menu</Header>
-        <Search placeholder="Enter dish or ingredients" onChange={onChangeFilter}/>
+        <Search
+          placeholder="Enter dish or ingredients"
+          onChange={onChangeFilter}
+        />
       </div>
       <div>
         {error && <>{error}</>}
