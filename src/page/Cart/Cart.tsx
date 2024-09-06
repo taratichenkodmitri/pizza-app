@@ -17,8 +17,8 @@ const DELIVERY_FEE = 169;
 
 const Cart: FC<CartProps> = () => {
   const [cartDishes, setCartDishes] = useState<DishIface[]>([]);
-  const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((s: RootState) => s.cart.items);
+  const dispatch = useDispatch<AppDispatch>();
   const jwt = useSelector((s: RootState) => s.user.jwt);
   const navigate = useNavigate();
   const price = cartItems
@@ -59,6 +59,7 @@ const Cart: FC<CartProps> = () => {
     getAllDishes();
   }, [cartItems]);
 
+  if (cartItems.length === 0) return <div>Cart is empty</div>;
   return (
     <div className={cn(styles.Cart)}>
       <Header className={styles.Head}>Cart</Header>
